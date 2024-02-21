@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+    <style>
+        .error-message{
+            padding-top: 13px;
+            color: red;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f1f1;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #9718dce8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registration</h1>
+
+        <form id="login" action="/register" method="POST">
+            <div class="form-group">
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" id="phone_number" name="phone_number" placeholder="Enter your phone number" required>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+        <div id="errorMessage" class="error-message"></div>
+    </div>
+    <script>
+      document.getElementById("login").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+    
+        var phoneNumber = document.getElementById("phone_number").value;
+    
+        // Validate the phone number
+        if (!validatePhoneNumber(phoneNumber)) {
+          document.getElementById("errorMessage").textContent = "⚠️Invalid phone number format.";
+          return; // Exit the function if the phone number is invalid
+        } else {
+          document.getElementById("errorMessage").textContent = "";
+        }
+    
+        // Make an API call to send the thank you message using Twilio
+        var accountSid = 'ACf5e8c1ad7713db81ce1c1fc555fc5145';
+        var authToken = 'd6fde7e87f7b0830d4a08acdd4bf1ce7';
+        var twilioNumber = '+12707871113';
+        var message = 'Thank you for registering! Get ready for timely flood alerts and updates in your area. Stay informed and stay safe!';
+    
+        fetch(`https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Basic ' + btoa(`${accountSid}:${authToken}`)
+          },
+          body: `To=${phoneNumber}&From=${twilioNumber}&Body=${encodeURIComponent(message)}`
+        })
+          .then(function(response) {
+            // Check if the message sending was successful
+            if (response.ok) {
+              // Make a separate request to the server to add the phone number to the database
+              fetch('/register', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `phone_number=${phoneNumber}`
+              })
+                .then(function(response) {
+                  // Check if the phone number was successfully added to the database
+                  if (response.ok) {
+                    // Redirect to the registration success page
+                    window.location.href = '/registration_success';
+                  } else {
+                    // Display an error message if adding phone number to the database failed
+                    document.getElementById("errorMessage").textContent = "⚠️Failed to register. Please try again later.";
+                  }
+                })
+                .catch(function(error) {
+                  // Display an error message if an error occurred during the request to add the phone number to the database
+                  document.getElementById("errorMessage").textContent = "⚠️An error occurred. Please try again later.";
+                });
+            } else {
+              // Display an error message if message sending failed
+              document.getElementById("errorMessage").textContent = "⚠️Failed to send the thank you message.";
+            }
+          })
+          .catch(function(error) {
+            // Display an error message if an error occurred during the API call
+            document.getElementById("errorMessage").textContent = "⚠️An error occurred. Please try again later.";
+          });
+      });
+    
+      function validatePhoneNumber(phoneNumber) {
+        var phoneRegex = /^\+?[1-9]\d{1,14}$/; // Supports numbers with optional '+' symbol, 1-14 digits
+        return phoneRegex.test(phoneNumber);
+      }
+    </script>
+    
+</body>
+</html>

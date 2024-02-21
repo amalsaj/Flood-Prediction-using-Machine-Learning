@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        /* Contact form styles */
+        .contact-form {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            transition: border-color 0.3s ease-in-out;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            border-color: #4CAF50;
+        }
+        
+        textarea {
+            height: 120px;
+        }
+        
+        .submit-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #7f817f;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+        .submit-button:hover {
+            background-color: #000000;
+            color: #f2f2f2;
+        }
+        
+        .submit-button:active {
+            background-color: #39843e;
+        }
+        
+        /* Contact details styles */
+        .contact-details {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .contact-details p {
+            margin-bottom: 5px;
+        }
+        
+        .contact-details a {
+            color: #4CAF50;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+        
+        .contact-details a:hover {
+            color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact Us</h1>
+        
+        <div class="contact-form">
+            <form>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-button">Submit</button>
+            </form>
+        </div>
+        
+        <div class="contact-details">
+            <p>Contact Details:</p>
+            <p>Phone:+917306255375</p>
+            <p>Email: <a href="mailto:info@example.com">floodsense@gmail.com</a></p>
+            <p>Website: <a href="http://www.example.com">www.floodsense.com</a></p>
+        </div>
+</body>
+</html>

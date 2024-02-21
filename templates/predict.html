@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <style>
+            .bye{
+            padding-left: 527px;
+             padding-top: 24px;
+    
+           }
+           
+.graph{
+    padding-top: 45px;
+    padding-left: 380px;
+}
+           </style>
+    </head>
+    <body>
+        <div class="bye">
+            {% if predictions %}
+            <h2>Prediction Results:</h2>
+            {% for prediction in predictions %}
+                <p class="result">Prediction: {{ prediction }}</p>
+            {% endfor %}
+            {% endif %}
+            </div>
+
+            <div class="graph">
+                <img src="../static/img/g.png" width="500px" height="333px" alt="graph">
+            </div>
+    </body>
+</html>

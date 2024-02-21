@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Results</title>
+
+
+
+    <script>
+    var content = document.getElementById("content");
+
+    content.addEventListener("mouseover", function() {
+      // Perform the projection effect or any other action here
+      // For example, you can change the background color or add a class to trigger an animation
+      content.style.backgroundColor = "yellow";
+    });
+
+    content.addEventListener("mouseout", function() {
+      // Revert the changes when the mouse moves away from the content
+      content.style.backgroundColor = "lightgray";
+    });
+    </script>
+    <style>
+      
+      @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color:  #636f81;
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 50px;
+}
+
+.text-center {
+  text-align: center;
+  text-align: center;
+    color: #000000;
+    font-variant-caps: petite-caps;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.pricing-box-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pricing-box {
+  background-color: #ffffff;
+  box-shadow: 0px 2px 20px 0px rgb(0, 0, 0);
+  border-radius: 4px;
+  flex: 1;
+  padding: 0 30px 30px;
+  margin: 2%;
+  min-width: 250px;
+  max-width: 350px;
+}
+
+.pricing-box h5 {
+  text-transform: uppercase;
+}
+
+.price {
+  margin: 24px 0;
+  font-size: 36px;
+  font-weight: 900;
+}
+
+.price sub, .price sup {
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.features-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+.features-list li {
+  font-weight: 100;
+  padding: 26px 0;
+  font-weight: 100;
+}
+
+.features-list li:not(:last-of-type) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+
+.pricing-box-bg-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('https://media.istockphoto.com/id/1326464939/photo/extreme-heavy-rain-storm-weather-flooded-streets-of-the-neighborhood-a-flooded-road-junction.jpg?b=1&s=170667a&w=0&k=20&c=_WuOLLIiOPwEGi-qO0IFVq0n1dxUNW6DSnoHgQyD0hs=');
+  background-size: cover;
+  background-position: center center;
+  color: #ffffff;
+}
+
+.pricing-box-bg-image .features-list li {
+  border-bottom-color: rgba(255, 255, 255, 1);
+}
+
+.pricing-box-bg-image .btn-primary {
+  background-color: #ffffff;
+  color: #000;
+}
+
+footer {
+  background-color: #222;
+  color: #fff;
+  font-size: 14px;
+  bottom: 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+footer p {
+  margin: 10px 0;
+}
+
+footer i {
+  color: red;
+}
+
+footer a {
+  color: #3C97BF;
+  text-decoration: none;
+}
+
+
+#project {
+      
+      transition: box-shadow 0.3s ease;
+    }
+
+    #project:hover {
+      box-shadow: 0 0 30px rgb(255, 255, 255);
+    }
+    
+
+      
+    </style>
+</head>
+<body>
+  <h1 class="text-center">Prediction Results</h1>
+
+  <div class="pricing-box-container">
+    <div class="pricing-box text-center" id="project">
+      <ul class="features-list">
+        <li> <h2> Region</h2>{{ region }}</li>
+        <li> <h3>Predictions</h3>
+          {% for prediction in predictions %}
+          {{ prediction }}
+          {% endfor %}</li>
+      </ul>
+    </div>
+  
+    <div class="pricing-box pricing-box-bg-image text-center" id="project">
+      <h5>WARNING</h5>
+      <ul class="features-list">
+        <li>  {% if flood_chances %}
+          <h2>Flood Chances:</h2>
+          <ul>
+            {% for month in flood_chances %}
+              <li>There is a chance of flood in {{ month }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>{{ result_message }}</p>
+        {% endif %}</li>
+      </ul>
+    </div>
+  
+    <div class="pricing-box text-center" id="project">
+      
+      <ul class="features-list">
+        <li> <img src="data:image/png;base64, {{ graph }}" alt="Rain Graph" height="300px" width="300px"></li>
+      </ul>
+    </div>
+  </div>
+  
+  <footer>
+    <p>
+     ©️ 2023 FLOOD FORECASTING
+    </p>
+  </footer>
+</body>
+</html>

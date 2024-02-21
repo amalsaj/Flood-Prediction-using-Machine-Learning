@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    section {
+      margin: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+
+    p {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    #vv{
+        color: #fff;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #333;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #585858;
+      color: #000000;
+    }
+
+    .highlight {
+      color: #ff5722;
+    }
+
+    .animated-border {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .animated-border::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #ff5722;
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .animated-border:hover::after {
+      transform: scaleX(1);
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .animated-pulse {
+      animation: pulse 2s infinite;
+    }
+
+    .animated-fade-in {
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    footer {
+      background-color: #000000;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1></h1>
+  </header>
+  <section>
+    <h2 class="animated-fade-in">About Us</h2>
+    <p class="animated-fade-in">Welcome to our vibrant and creative website! We are a team of experts dedicated to providing accurate flood predictions and timely alerts to our users. Our advanced logistic regression model combined with state-of-the-art data analysis techniques allows us to deliver reliable flood risk assessments.</p>
+    <p class="animated-fade-in">At our core, we prioritize the safety and well-being of our users. Our mission is to keep you informed and empowered in the face of potential flood events. With our platform, you can access real-time flood predictions, customize alert settings, and take proactive measures to protect yourself and your loved ones.</p>
+    <p class="animated-fade-in">We believe in innovation, reliability, and user-centric design. Join our community and discover a new level of flood prediction and preparedness.</p>
+    <a class="button animated-pulse" href="contact.html">Contact Us</a>
+    
+  </section>
+  <footer>
+    <p id="vv">&copy; 2023 Your Company. All rights reserved.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flood Prediction</title>
+    <style>
+
+/*select */
+.dropdown {
+    display: inline-block;
+}
+
+.dropdown-button {
+    background-color:transparent;
+    border-color: white;
+    color: #ffffff;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.dropdown-button:hover {
+            background-color: #ffcc00;
+            color: rgb(255, 255, 255);
+        }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+
+/*header */
+body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 97%;
+      background-color: rgba(0, 0, 0, 0.3);/* Adjust the background color and transparency as needed */
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .header:hover{
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .logo img {
+      width: 50px; /* Adjust the width as needed */
+      border-radius: 70%; /* Apply round border */
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-link {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: #ffcc00;
+      visibility: hidden;
+      transform: scaleX(0);
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #ffcc00;
+    }
+
+    .nav-link:hover:before {
+      visibility: visible;
+      transform: scaleX(1);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .main {
+  padding-top: 102px;
+}
+        h1 {
+    font-size: 9px; /* Set the font size to 48 pixels */
+    font-weight: bold; /* Make the text bold */
+    color: #000000;
+    background-color: #fff;
+    padding: 8px; /* Add some padding for spacing */
+    border-radius: 10px; /* Round the corners */
+    text-align: center;
+    shape-image-threshold: initial;
+  } 
+  .head{
+    padding-top: 2px;
+    
+  }  
+  .text{
+    font-size: 13px;
+    text-align: center;
+    font-family: ui-rounded;
+    color: #fff;
+  }
+ 
+ .ramp{
+      font-size: 72px;
+      text-align:center;
+      background-color: transparent;
+      color: #fff;
+      
+  }
+        body {
+	font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+	margin: 0;
+	padding: 0;
+}
+.container{
+  padding-left: 498px;
+    padding-top: 33px;
+}
+
+
+
+
+
+main {
+  padding: 20px;
+  background: url(../static/img/slide_2.jpg);
+      background-size: cover;
+      padding-bottom: 35px;
+
+}
+
+section{
+  
+  padding-left: 541px;
+    padding-top: 20px;
+}
+
+footer {
+	background-color: #000000eb;
+	margin-top: 452px;
+	color: #ffffff;
+	padding: 8px;
+	text-align: center;
+}
+.news-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        color: #000000;
+       
+    }
+    
+    .news-box {
+        flex-basis: calc(33.33% - 20px);
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+        color: #f9f9f9;
+    }
+    
+    .news-box:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .news-image {
+        max-width: 100%;
+        height: auto;
+    }
+    #aa{
+      background-image: url(https://static.tnn.in/photo/msid-101031726,updatedat-1686881472746,width-1280,height-720,resizemode-75/101031726.jpg);
+      background-size: cover;
+    }
+    #bb{
+      background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl6PMa3D19LC1Ff5D9zcTdSQXnLBOFc9zI9R-SlDpsO5ze22mTt_fWVBk2r74rhGCxD14&usqp=CAU);
+      background-size: cover;
+
+    }
+    #cc{
+      background-image:  url(https://www.skymetweather.com/content/wp-content/uploads/2023/05/South-india-weather-rains.png);
+      background-size: cover;
+      
+    }
+
+
+    .gap {
+  height: 6em; /* Adjust the height to determine the size of the gap */
+}
+
+
+
+    </style>
+
+</head>
+
+<body>
+  <header class="header">
+    <div class="logo">
+      <img src="../static/img/nn.png" alt="AI Flood Forecasting Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/register" class="nav-link">Register</a></li>
+        <li><a href="/about" class="nav-link">About</a></li>
+        <li><a href="/services" class="nav-link">Services</a></li>
+        <li><a href="/contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+    <main class="main">
+      <div class="img">
+        <div class="head">
+            <h1 class="ramp">FLOOD AND RAINFALL PREDICTION</h1>
+     <p class="text">FLOOD FORECASTING REQUIRES ACCURATE ESTIMATES OF THE SPATIAL AND TEMPORAL RAINFALL RATES OVER A CATCHMENT.</p>
+        </div> 
+        <!--This is a comment. Comments are not displayed in the browser
+ <div class="container">
+        <form action="/predict" method="POST">
+            <button  class="flood" type="submit">FLOOD PREDICTION</button>
+        </form>
+        </div>--> 
+ </div>
+ <section>
+    <div id="region-dropdown" class="dropdown">
+        <button onclick="toggleDropdown()" class="dropdown-button">Select a Region</button>
+        <div id="region-options" class="dropdown-content">
+            <form action="{{ url_for('prediction') }}" method="POST" id="region-form">
+                <select name="region" id="region-select">
+                  <option value="Thrissur">Thrissur</option>
+                  <option value="Alapuzha">Alapuzha</option>
+                  <option value="Eranakulam">Eranakulam</option>
+                  <option value="Idukki">Idukki</option>
+                  <option value="Malappuram">Malappuram</option>
+                    <!-- Add more options for other regions -->
+                </select>
+                <button type="submit">Predict</button>
+            </form>
+        </div>
+    </div>
+</section>
+<script>
+  function toggleDropdown() {
+      var dropdown = document.getElementById("region-options");
+      dropdown.classList.toggle("show");
+  }
+</script>
+
+
+    </main>
+    <div class="gap"></div>
+   
+    <div class="news-container">
+      <div class="news-box" id="aa">
+          <h2>Heavy Rains Over Kerala Till Weekend</h2>
+          <p>South Peninsula continue to be weather active pocket amidst significant drop from plains of most </p>
+          <a href="https://www.skymetweather.com/content/weather-news-and-analysis/moderate-to-heavy-rains-over-kerala-till-weekend/">Read more</a>
+      </div>
+      
+      <div class="news-box" id="bb">
+          <h2>Temperatures set to rise</h2>
+          <p>Temperatures set to rise in Delhi, but heatwave unlikely for 4-5 days</p>
+          <a href="https://economictimes.indiatimes.com/news/india/temperatures-set-to-rise-in-delhi-but-heatwave-unlikely-for-4-5-days/articleshow/100811334.cms">Read more</a>
+      </div>
+      
+      <div class="news-box" id="cc">
+          <h2>Intense Rainfall</h2>
+          <p>Due to these weather parameters, we expect light to</p>
+          <a href="https://www.skymetweather.com/content/weather-news-and-analysis/intense-rainfall-to-continue-over-tamil-nadu-karnataka-and-parts-of-kerala/">Read more</a>
+      </div>
+      
+      <!-- Add more regions as needed -->
+  </div>     
+    
+
+       
+
+
+
+
+    <footer>
+		<p>&copy; 2023 AI FLOOD FORECASTING</p>
+	</footer>
+
+    <script>
+     
+
+
+
+
+
+
+        window.onscroll = function() {myFunction()};
+        
+        var header = document.getElementById("mheader");
+        var sticky = header.offsetTop;
+        
+        function myFunction() {
+          if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+          } else {
+            header.classList.remove("sticky");
+          }
+        }
+        </script>
+</body>
+</html>
